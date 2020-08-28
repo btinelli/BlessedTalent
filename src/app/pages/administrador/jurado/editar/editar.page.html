@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Info. jurado</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formJurado" (submit)="salvar()">
+    <ion-card>
+      <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-input type="text" formControlName="nome"></ion-input>
+      </ion-item>
+
+    </ion-card>
+    <ion-button expand="block" color="secondary" size="large" type="submit" [disabled]="!formJurado.valid">Salvar
+    </ion-button>
+
+  </form>
+</ion-content>
+<ion-footer>
+
+  <ion-button expand="block" color="warning" size="large" (click)="alertConfirmaExclusao()">Deletar</ion-button>
+</ion-footer>

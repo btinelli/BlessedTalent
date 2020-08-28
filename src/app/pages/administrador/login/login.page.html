@@ -1,0 +1,21 @@
+<ion-content>
+  <form [formGroup]="formLogin" (submit)="entrar()">
+    <ion-card>
+      <ion-card-header>
+        <ion-img src="assets/img/logo.png"></ion-img>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>E-mail:</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Senha:</ion-label>
+          <ion-input type="password" formControlName="senha"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button expand="block" color="secondary" size="large" type="submit" [disabled]="!formLogin.valid">Entrar
+      </ion-button>
+    </ion-card>
+  </form>
+</ion-content>

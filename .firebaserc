@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "blessed-talent": {
+      "hosting": {
+        "app": [
+          "blessed-talent"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "blessed-talent"
+  }
+}

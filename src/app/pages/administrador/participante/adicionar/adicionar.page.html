@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Novo participante</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formParticipante" (submit)="salvar()">
+    <ion-card>
+      <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-input type="text" formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Idade:</ion-label>
+        <ion-input type="number" formControlName="idade" (change)="calcularCategoria()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Categoria:</ion-label>
+        <ion-input type="text" formControlName="categoria" [disabled]="true"></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-button expand="block" color="secondary" size="large" type="submit" [disabled]="!formParticipante.valid">
+      Adicionar
+    </ion-button>
+
+  </form>
+
+
+</ion-content>

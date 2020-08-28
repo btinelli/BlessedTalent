@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>APRESENTANDO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let participante of participantes">
+    <ion-card class="ion-justify-content-center">
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>{{participante.nome}}</ion-card-title>
+        <ion-card-subtitle>{{participante.categoria}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="formNota">
+          <ion-item>
+            <ion-label>Nota</ion-label>
+            <ion-select interface="action-sheet" formControlName="nota" cancelText="Cancelar">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+              <ion-select-option value="8">8</ion-select-option>
+              <ion-select-option value="9">9</ion-select-option>
+              <ion-select-option value="10">10</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button *ngIf="participantes.length > 0" expand="block" color="secondary" size="large"
+      [disabled]="!formNota.valid" (click)="votar(participante)">Votar
+    </ion-button>
+  </ion-list>
+
+</ion-content>

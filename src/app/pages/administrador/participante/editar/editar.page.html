@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Info. participante</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formParticipante" (submit)="salvar()">
+    <ion-card>
+      <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-input type="text" formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Idade:</ion-label>
+        <ion-input type="text" formControlName="idade" (change)="calcularCategoria()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Categoria:</ion-label>
+        <ion-input type="text" formControlName="categoria" [disabled]="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Apresentando:</ion-label>
+        <ion-select interface="action-sheet" cancelText="Cancelar" formControlName="apresentando">
+          <ion-select-option value="true">Sim</ion-select-option>
+          <ion-select-option value="false">Não</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>Notas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item *ngFor="let nota of notas; let i = index">
+          <ion-col size="6" class="ion-text-start ion-no-padding">
+            <ion-label>{{nota.jurado}}</ion-label>
+          </ion-col>
+          <ion-col size="4" class="ion-text-right ion-no-padding">
+            <ion-label>{{nota.valor}}</ion-label>
+          </ion-col>
+          <ion-col size=2 class="ion-text-right ion-no-padding" (click)="alertConfirmaExclusaoNota(nota)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-col>
+        </ion-item>
+      </ion-card-content>
+
+    </ion-card>
+    <ion-button expand="block" color="secondary" size="large" type="submit" [disabled]="!formParticipante.valid">Salvar
+    </ion-button>
+
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-button expand="block" color="warning" size="large" (click)="alertConfirmaExclusao()">Deletar</ion-button>
+</ion-footer>
