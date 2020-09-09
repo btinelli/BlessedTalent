@@ -7,6 +7,6 @@ export class Participante {
     public img: string;
     public categoria: string;
     public apresentando: string;
-    public notaFinal: string;
+    public media: number;
 
 }

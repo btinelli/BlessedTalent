@@ -5,6 +5,7 @@ import { ModalController, NavParams, AlertController } from '@ionic/angular';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Participante } from 'src/app/class/participante.class';
 import { Nota } from 'src/app/class/nota.class ';
+import { ParseError } from '@angular/compiler';
 
 @Component({
   selector: 'app-editar',
@@ -70,6 +71,10 @@ export class EditarPage implements OnInit {
     participante.idade = this.formParticipante.value.idade
     participante.categoria = this.formParticipante.value.categoria
     participante.apresentando = this.formParticipante.value.apresentando
+    if (this.notas.length > 0) {
+
+      participante.media = this.calculaNotaFinal()
+    }
     this.service.alterarParticipante(participante).then(res => {
       this.toast.success('Alterado com sucesso')
       this.dismiss()
@@ -154,6 +159,12 @@ export class EditarPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  calculaNotaFinal() {
+    let soma = this.notas.map((nota) => parseInt(nota.valor)).reduce((total, nota) => total += nota)
+    return soma / this.notas.length
+
   }
 
 }
