@@ -34,11 +34,11 @@ export class AdicionarPage implements OnInit {
 
     let idade = this.formParticipante.value.idade
 
-    if (idade <= 12) {
+    if (idade <= 11) {
       this.formParticipante.controls['categoria'].setValue('Kids')
-    } else if (idade > 12 && idade <= 16) {
+    } else if (idade > 11 && idade <= 16) {
       this.formParticipante.controls['categoria'].setValue('Teen')
-    } else if (idade > 16 && idade <= 20) {
+    } else if (idade > 16) {
       this.formParticipante.controls['categoria'].setValue('Young')
     }
 
